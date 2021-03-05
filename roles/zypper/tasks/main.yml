@@ -78,6 +78,7 @@
       - cockpit-storaged
       - cockpit-system
       - cockpit-ws
+      - exa
   notify: reboot
 
 - name: Uninstall unnecessary zypper packages

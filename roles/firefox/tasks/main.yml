@@ -8,20 +8,20 @@
   get_url:
     url: https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64&lang=en-US
     dest: /opt/firefox.tar.bz2
-  when: firefox_installed.stat.exists == false and firefox_installed.stat.isdir == false
+  when: firefox_installed.stat.exists == false
 
 - name: Extract firefox.tar.bz2
   ansible.builtin.unarchive:
     src: /opt/firefox.tar.bz2
     remote_src: yes
     dest: /opt
-  when: firefox_installed.stat.exists == false and firefox_installed.stat.isdir == false
+  when: firefox_installed.stat.exists == false
 
 - name: Cleanup archive
   ansible.builtin.file:
     path: /opt/firefox.tar.bz2
     state: absent
-  when: firefox_installed.stat.exists == false and firefox_installed.stat.isdir == false
+  when: firefox_installed.stat.exists == false
 
 - name: Change firefox folder ownership
   ansible.builtin.file:

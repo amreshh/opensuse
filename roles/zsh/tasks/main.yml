@@ -30,3 +30,32 @@
     dest: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
     depth: 1
     update: yes
+
+- name: Enable zsh auto update
+  ansible.builtin.lineinfile:
+    path: ~/.zshrc
+    regexp: 'DISABLE_AUTO_UPDATE="true"'
+    line: '# DISABLE_AUTO_UPDATE="true"'
+
+- name: Add source zshenv
+  ansible.builtin.lineinfile:
+    path: ~/.zshrc
+    insertafter: 'source $ZSH/oh-my-zsh.sh'
+    line: 'source ~/.zshenv'
+
+- name: Exclude errors from zsh history
+  ansible.builtin.lineinfile:
+    path: ~/.zshrc
+    line: 'zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }'
+
+- name: Add comment to zsh history exclusion function
+  ansible.builtin.lineinfile:
+    path: ~/.zshrc
+    insertbefore: 'zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }'
+    line: '# Exclude errors from history'
+
+- name: Copy zshenv
+  ansible.builtin.template:
+    src: zshenv.j2
+    dest: ~/.zshenv
+    mode: '0644'
