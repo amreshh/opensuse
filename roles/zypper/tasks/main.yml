@@ -79,6 +79,7 @@
       - cockpit-system
       - cockpit-ws
       - exa
+      - neofetch
   notify: reboot
 
 - name: Uninstall unnecessary zypper packages

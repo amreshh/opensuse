@@ -8,6 +8,7 @@
     - ranger
     - zsh
     - firefox
+    - neovim
 
 # User
 - hosts: opensuse
@@ -18,3 +19,4 @@
     - ranger
     - zsh
     - python
+    - neovim
