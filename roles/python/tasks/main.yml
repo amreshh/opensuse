@@ -1,0 +1,9 @@
+---
+- name: Upgrade python pip packages
+  pip:
+    name: pip
+    extra_args: --upgrade
+
+- name: Install python pipenv
+  pip:
+    name: pipenv

@@ -1,0 +1,20 @@
+---
+# Root
+- hosts: opensuse
+  remote_user: root
+  become: yes
+  roles:
+    - zypper
+    - ranger
+    - zsh
+    - firefox
+
+# User
+- hosts: opensuse
+  remote_user: opensuse
+  become: no
+  roles:
+    - flatpak
+    - ranger
+    - zsh
+    - python

@@ -1,0 +1,32 @@
+---
+- name: Add the flathub repository remote to the user installation
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+    method: user
+
+- name: Install flatpak packages
+  community.general.flatpak:
+    name: "{{ packages }}"
+    state: present
+    remote: flathub
+    method: user
+  with_items:
+    - com.spotify.Client
+    - com.bitwarden.desktop
+    - com.getpostman.Postman
+    - com.github.alainm23.planner
+    - com.microsoft.Teams
+    - com.uploadedlobster.peek
+    - com.wps.Office
+    - net.sourceforge.jpdftweak.jPdfTweak
+    - org.clementine_player.Clementine
+    - org.gimp.GIMP
+    - org.keepassxc.KeePassXC
+    - org.musicbrainz.Picard
+    - org.qbittorrent.qBittorrent
+    - org.remmina.Remmina
+    - org.videolan.VLC
+  loop_control:
+    loop_var: packages

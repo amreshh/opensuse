@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Firefox Developer Edition
+GenericName=Web Browser
+Exec=/opt/firefox/firefox
+Terminal=false
+Icon=/opt/firefox/browser/chrome/icons/default/default128.png
+Type=Application
+Categories=Network;WebBrowser;Favorites;
+MimeType=text/html;text/xml;application/xhtml_xml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
+X-Ayatana-Desktop-Shortcuts=NewWindow;NewIncognito

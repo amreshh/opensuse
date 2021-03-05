@@ -1,0 +1,40 @@
+---
+- name: Check if firefox already present
+  ansible.builtin.stat:
+    path: /opt/firefox
+  register: firefox_installed
+
+- name: Download Firefox Developer Edition
+  get_url:
+    url: https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64&lang=en-US
+    dest: /opt/firefox.tar.bz2
+  when: firefox_installed.stat.exists == false and firefox_installed.stat.isdir == false
+
+- name: Extract firefox.tar.bz2
+  ansible.builtin.unarchive:
+    src: /opt/firefox.tar.bz2
+    remote_src: yes
+    dest: /opt
+  when: firefox_installed.stat.exists == false and firefox_installed.stat.isdir == false
+
+- name: Cleanup archive
+  ansible.builtin.file:
+    path: /opt/firefox.tar.bz2
+    state: absent
+  when: firefox_installed.stat.exists == false and firefox_installed.stat.isdir == false
+
+- name: Change firefox folder ownership
+  ansible.builtin.file:
+    path: /opt/firefox
+    owner: opensuse
+    group: users
+    mode: '0755'
+    recurse: yes
+
+- name: Create firefox desktop entry
+  ansible.builtin.copy:
+    src: firefox-developer-edition.desktop
+    dest: /usr/share/applications
+    group: root
+    owner: root
+    mode: '0644'

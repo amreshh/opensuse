@@ -1,0 +1,32 @@
+---
+# https://galaxy.ansible.com/gantsign/oh-my-zsh
+- name: Install oh-my-zsh
+  import_role:
+    name: gantsign.oh-my-zsh
+  become: yes
+  vars:
+    users:
+      - username: "{{ ansible_user_id }}"
+        oh_my_zsh:
+          theme: agnoster
+          plugins:
+            - git
+            - docker
+            - docker-compose
+            - fzf
+            - zsh-autosuggestions
+            - zsh-syntax-highlighting
+
+- name: Clone zsh-autosuggestion
+  ansible.builtin.git:
+    repo: "https://github.com/zsh-users/zsh-autosuggestions"
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+    depth: 1
+    update: yes
+
+- name: Clone zsh-syntax-highlighting
+  ansible.builtin.git:
+    repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+    depth: 1
+    update: yes

@@ -1,0 +1,19 @@
+---
+- name: Create ranger config directory
+  ansible.builtin.file:
+    path: ~/.config/ranger
+    state: directory
+    mode: '0755'
+
+- name: Copy ranger rc.conf
+  ansible.builtin.copy:
+    src: rc.conf
+    dest: ~/.config/ranger/rc.conf
+    mode: '0644'
+
+- name: Clone devicons
+  ansible.builtin.git:
+    repo: "https://github.com/alexanderjeurissen/ranger_devicons"
+    dest:  ~/.config/ranger/plugins/ranger_devicons
+    depth: 1
+    update: yes

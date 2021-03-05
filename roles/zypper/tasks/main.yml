@@ -1,0 +1,130 @@
+---
+- name: Add vs code-insiders repo
+  community.general.zypper_repository:
+    repo: "https://packages.microsoft.com/yumrepos/vscode"
+    autorefresh: yes
+    enabled: yes
+    name: vscode
+    state: present
+    auto_import_keys: yes
+    disable_gpg_check: yes
+
+- name: Add zsh-autosuggestions repo
+  community.general.zypper_repository:
+    repo: "https://download.opensuse.org/repositories/shells:/zsh-users:/zsh-autosuggestions/openSUSE_Tumbleweed/"
+    autorefresh: yes
+    enabled: yes
+    name: zsh-autosuggestions
+    state: present
+    auto_import_keys: yes
+    disable_gpg_check: no
+
+- name: Add zsh-syntax-highlighting repo
+  community.general.zypper_repository:
+    repo: "https://download.opensuse.org/repositories/shells:/zsh-users:/zsh-syntax-highlighting/openSUSE_Tumbleweed/"
+    autorefresh: yes
+    enabled: yes
+    name: zsh-syntax-highlighting
+    state: present
+    auto_import_keys: yes
+    disable_gpg_check: no
+
+- name: Perform a dist-upgrade
+  community.general.zypper:
+    name: "*"
+    state: dist-upgrade
+    allow_vendor_change: true
+    extra_args: "--allow-arch-change"
+  notify: reboot
+
+- name: Install zypper packages
+  community.general.zypper:
+    name: "{{ packages }}"
+    state: latest
+    update_cache: yes
+  vars:
+    packages:
+      - bat
+      - git
+      - git-lfs
+      - ranger
+      - zstd
+      - neovim
+      - docker
+      - ripgrep
+      - fzf
+      - zsh
+      - zsh-autosuggestions
+      - zsh-syntax-highlighting
+      - docker-zsh-completion
+      - fzf-zsh-completion
+      - ripgrep-zsh-completion
+      - docker-zsh-completion
+      - flatpak
+      - NetworkManager-vpnc
+      - vpnc
+      - latte-dock
+      - code-insiders
+      - filelight
+      - kvantum-manager
+      - kvantum-qt5
+      - ansible
+      - cockpit
+      - cockpit-bridge
+      - cockpit-machines
+      - cockpit-networkmanager
+      - cockpit-packagekit
+      - cockpit-podman
+      - cockpit-storaged
+      - cockpit-system
+      - cockpit-ws
+  notify: reboot
+
+- name: Uninstall unnecessary zypper packages
+  community.general.zypper:
+    name: "{{ packages }}"
+    state: absent
+    update_cache: yes
+  vars:
+    packages:
+      - MozillaFirefox
+      - MozillaFirefox-branding-openSUSE
+      - patterns-games-games
+      - patterns-kde-kde_games
+      - kdegames-carddecks-default
+      - libkdegames
+      - libkdegames-lang
+      - libkf5kdegames6
+      - skanlite
+      - skanlite-lang
+      - konversation
+      - konversation-lang
+      - akregator
+      - akregator-lang
+      - tigervnc
+      - libvlc5
+      - libvlccore9
+      - vlc
+      - vlc-codec-gstreamer
+      - vlc-lang
+      - vlc-noX
+      - vlc-qt
+      - vlc-vdpau
+      - kate
+      - kate-lang
+      - kate-plugins
+      - libkate1
+      - liboggkate1
+  notify: reboot
+
+- name: Enable services
+  ansible.builtin.systemd:
+    state: started
+    daemon_reload: yes
+    enabled: yes
+    name: "{{ services }}"
+  with_items:
+    - docker
+    - cockpit
+  loop_control:
+    loop_var: services

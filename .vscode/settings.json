@@ -1,0 +1,9 @@
+{
+  // set indentation to 2
+	"editor.detectIndentation": false,
+  "editor.tabSize": 2,
+  "files.associations": {
+    // ansible
+    "**/roles/**/*.yml": "ansible"
+  }
+}
