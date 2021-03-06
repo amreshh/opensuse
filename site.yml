@@ -5,11 +5,12 @@
   become: yes
   roles:
     - zypper
+    - user
     - ranger
     - zsh
     - firefox
     - neovim
-    # - nerd_fonts
+    - nerd_fonts
 
 # User
 - hosts: opensuse

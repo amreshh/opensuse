@@ -1,0 +1,20 @@
+---
+- name: "Create user {{ opensuse_user }}"
+  ansible.builtin.user:
+    name: "{{ opensuse_user }}"
+    comment: "{{ opensuse_user_comment }}"
+    state: present
+    append: yes
+    create_home: yes
+    generate_ssh_key: yes
+    ssh_key_bits: 4096
+    shell: /bin/zsh
+    password: "{{ opensuse_password | password_hash('sha512', 'opensuse_password_salt') }}"
+    groups:
+      - docker
+      - libvirt
+      - libvirtdbus
+      - vagrant
+      - vboxusers
+      - users
+      - wheel

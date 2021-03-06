@@ -83,6 +83,7 @@
       - virt-manager
       - vagrant
       - vagrant-libvirt
+      - virtualbox-qt
   notify: reboot
 
 - name: Uninstall unnecessary zypper packages
