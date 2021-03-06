@@ -80,6 +80,9 @@
       - cockpit-ws
       - exa
       - neofetch
+      - virt-manager
+      - vagrant
+      - vagrant-libvirt
   notify: reboot
 
 - name: Uninstall unnecessary zypper packages
@@ -128,5 +131,6 @@
   with_items:
     - docker
     - cockpit
+    - libvirtd
   loop_control:
     loop_var: services

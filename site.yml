@@ -9,6 +9,7 @@
     - zsh
     - firefox
     - neovim
+    # - nerd_fonts
 
 # User
 - hosts: opensuse
@@ -20,3 +21,4 @@
     - zsh
     - python
     - neovim
+    - kde

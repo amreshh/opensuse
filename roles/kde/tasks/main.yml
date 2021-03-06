@@ -1,0 +1,7 @@
+---
+- name: Configure KDE
+  include: "{{ tasks }}"
+  with_items:
+    - krunner.yml
+  loop_control:
+    loop_var: tasks

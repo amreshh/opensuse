@@ -1,0 +1,16 @@
+---
+- name: Clone nerd-fonts
+  ansible.builtin.git:
+    repo: "https://github.com/ryanoasis/nerd-fonts.git"
+    dest: /tmp/nerd-fonts
+    depth: 1
+    update: yes
+    force: yes
+
+- name: Patch Hack fonts
+  ansible.builtin.shell:
+    cmd: ./install.sh Hack
+    chdir: /tmp/nerd-fonts
+  args:
+    executable: /bin/zsh
+    warn: no
