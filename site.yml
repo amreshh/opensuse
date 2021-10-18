@@ -1,25 +1,26 @@
 ---
 # Root
 - hosts: opensuse
-  remote_user: root
+  remote_user: "{{ ansible_user }}"
   become: yes
   roles:
     - zypper
     - user
     - ranger
     - zsh
+    - zplug
     - firefox
     - neovim
-    - nerd_fonts
+    # - nerd_fonts
 
 # User
-- hosts: opensuse
-  remote_user: opensuse
-  become: no
-  roles:
-    - flatpak
-    - ranger
-    - zsh
-    - python
-    - neovim
-    - kde
+# - hosts: opensuse
+#   remote_user: "{{ ansible_user }}"
+#   become: no
+#   roles:
+#     - flatpak
+#     - ranger
+#     - zsh
+#     - python
+#     - neovim
+#     # - kde

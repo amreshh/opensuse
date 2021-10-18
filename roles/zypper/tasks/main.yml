@@ -9,25 +9,35 @@
     auto_import_keys: yes
     disable_gpg_check: yes
 
-- name: Add zsh-autosuggestions repo
+- name: Add nvidia repo
   community.general.zypper_repository:
-    repo: "https://download.opensuse.org/repositories/shells:/zsh-users:/zsh-autosuggestions/openSUSE_Tumbleweed/"
+    repo: "https://download.nvidia.com/opensuse/tumbleweed"
     autorefresh: yes
     enabled: yes
-    name: zsh-autosuggestions
+    name: nvidia
     state: present
     auto_import_keys: yes
     disable_gpg_check: no
 
-- name: Add zsh-syntax-highlighting repo
-  community.general.zypper_repository:
-    repo: "https://download.opensuse.org/repositories/shells:/zsh-users:/zsh-syntax-highlighting/openSUSE_Tumbleweed/"
-    autorefresh: yes
-    enabled: yes
-    name: zsh-syntax-highlighting
-    state: present
-    auto_import_keys: yes
-    disable_gpg_check: no
+# - name: Add zsh-autosuggestions repo
+#   community.general.zypper_repository:
+#     repo: "https://download.opensuse.org/repositories/shells:/zsh-users:/zsh-autosuggestions/openSUSE_Tumbleweed/"
+#     autorefresh: yes
+#     enabled: yes
+#     name: zsh-autosuggestions
+#     state: present
+#     auto_import_keys: yes
+#     disable_gpg_check: no
+
+# - name: Add zsh-syntax-highlighting repo
+#   community.general.zypper_repository:
+#     repo: "https://download.opensuse.org/repositories/shells:/zsh-users:/zsh-syntax-highlighting/openSUSE_Tumbleweed/"
+#     autorefresh: yes
+#     enabled: yes
+#     name: zsh-syntax-highlighting
+#     state: present
+#     auto_import_keys: yes
+#     disable_gpg_check: no
 
 - name: Perform a dist-upgrade
   community.general.zypper:
@@ -51,15 +61,18 @@
       - zstd
       - neovim
       - docker
+      - dolphin-plugins
       - ripgrep
       - fzf
       - zsh
-      - zsh-autosuggestions
-      - zsh-syntax-highlighting
-      - docker-zsh-completion
-      - fzf-zsh-completion
-      - ripgrep-zsh-completion
-      - docker-zsh-completion
+      - fd
+      # - fd-zsh-completion
+      # - zsh-autosuggestions
+      # - zsh-syntax-highlighting
+      # - docker-zsh-completion
+      # - fzf-zsh-completion
+      # - ripgrep-zsh-completion
+      # - docker-zsh-completion
       - flatpak
       - NetworkManager-vpnc
       - vpnc
@@ -83,7 +96,17 @@
       - virt-manager
       - vagrant
       - vagrant-libvirt
-      - virtualbox-qt
+      - terraform
+      - terraform-provider-aws
+      - sshpass
+      - qemu-hw-display-qxl
+      - gnome-keyring
+      - virt-viewer
+      - plasma5-systemmonitor
+      - minikube
+      - helm
+      - compsize
+      - x11-video-nvidiaG05
   notify: reboot
 
 - name: Uninstall unnecessary zypper packages
@@ -121,6 +144,8 @@
       - kate-plugins
       - libkate1
       - liboggkate1
+      - spectacle
+      - spectacle-lang
   notify: reboot
 
 - name: Enable services
@@ -130,8 +155,17 @@
     enabled: yes
     name: "{{ services }}"
   with_items:
-    - docker
-    - cockpit
-    - libvirtd
+    - docker.service
+    - cockpit.socket
+    - libvirtd.service
   loop_control:
     loop_var: services
+
+
+# set this user as follows:
+# amresh@chaosrealm  ~  id libvirtdbus
+# uid=457(libvirtdbus) gid=457(libvirtdbus) groups=108(libvirt),457(libvirtdbus)
+# amresh@chaosrealm  ~ 
+
+
+# add nvidia repo

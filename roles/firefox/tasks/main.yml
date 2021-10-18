@@ -26,7 +26,7 @@
 - name: Change firefox folder ownership
   ansible.builtin.file:
     path: /opt/firefox
-    owner: "{{ opensuse_user }}"
+    owner: "{{ ansible_user }}"
     group: users
     mode: '0755'
     recurse: yes

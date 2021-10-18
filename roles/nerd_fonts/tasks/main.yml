@@ -14,3 +14,5 @@
   args:
     executable: /bin/zsh
     warn: no
+
+./install.sh --clean --install-to-system-path --fontawesome

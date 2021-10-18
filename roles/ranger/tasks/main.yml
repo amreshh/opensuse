@@ -6,8 +6,8 @@
     mode: '0755'
 
 - name: Copy ranger rc.conf
-  ansible.builtin.copy:
-    src: rc.conf
+  ansible.builtin.template:
+    src: rc.conf.j2
     dest: ~/.config/ranger/rc.conf
     mode: '0644'
 

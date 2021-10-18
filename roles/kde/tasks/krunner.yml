@@ -4,4 +4,3 @@
     src: krunnerrc
     dest: ~/.config/krunnerrc
     mode: '0600'
-  notify: restart kwin

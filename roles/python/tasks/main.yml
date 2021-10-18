@@ -1,9 +1,19 @@
 ---
 - name: Upgrade python pip packages
-  pip:
+  ansible.builtin.pip:
     name: pip
     extra_args: --upgrade
+    executable: /usr/bin/pip3
 
 - name: Install python pipenv
-  pip:
+  ansible.builtin.pip:
     name: pipenv
+    executable: /usr/bin/pip3
+
+- name: Install python bpytop
+  ansible.builtin.pip:
+    name: bpytop
+    executable: /usr/bin/pip3
+
+
+# pip install awscli

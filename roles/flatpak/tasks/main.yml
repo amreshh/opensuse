@@ -15,18 +15,19 @@
   with_items:
     - com.spotify.Client
     - com.bitwarden.desktop
-    - com.getpostman.Postman
-    - com.github.alainm23.planner
+    # - com.getpostman.Postman
     - com.microsoft.Teams
     - com.uploadedlobster.peek
-    - com.wps.Office
     - net.sourceforge.jpdftweak.jPdfTweak
     - org.clementine_player.Clementine
-    - org.gimp.GIMP
     - org.keepassxc.KeePassXC
     - org.musicbrainz.Picard
     - org.qbittorrent.qBittorrent
     - org.remmina.Remmina
     - org.videolan.VLC
+    - org.ksnip.ksnip
+    - org.chromium.Chromium
+    - com.stremio.Stremio
+    - org.wireshark.Wireshark
   loop_control:
     loop_var: packages

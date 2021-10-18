@@ -1,20 +1,25 @@
 ---
-- name: "Create user {{ opensuse_user }}"
+- name: Set zsh as default shell for root
   ansible.builtin.user:
-    name: "{{ opensuse_user }}"
-    comment: "{{ opensuse_user_comment }}"
+    name: root
+    state: present
+    shell: /bin/zsh
+
+- name: "Create user {{ ansible_user }}"
+  ansible.builtin.user:
+    name: "{{ ansible_user }}"
     state: present
     append: yes
-    create_home: yes
-    generate_ssh_key: yes
-    ssh_key_bits: 4096
     shell: /bin/zsh
-    password: "{{ opensuse_password | password_hash('sha512', 'opensuse_password_salt') }}"
     groups:
       - docker
       - libvirt
       - libvirtdbus
       - vagrant
-      - vboxusers
       - users
-      - wheel
+
+# this works for cockpit
+
+# amresh@chaosrealm  ~  id amresh
+# uid=1000(amresh) gid=100(users) groups=454(docker),108(libvirt),457(libvirtdbus),453(vagrant),456(vboxusers),100(users)
+# amresh@chaosrealm  ~ 

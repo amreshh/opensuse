@@ -3,24 +3,35 @@
 LANGUAGE="en_US:en"
 LANG="en_US.UTF-8"
 
+RHEL_USERNAME="{{ rhel_user }}"
+RHEL_PASSWORD="{{ rhel_password }}"
+
+HISTSIZE=999999999
+SAVEHIST=$HISTSIZE
+
 FZF_DEFAULT_COMMAND="rg --files --follow --no-ignore-vcs --hidden --glob '!.git'"
 FZF_DEFAULT_OPTS="
-	--height=85%
-	--prompt='∼ ' --pointer='▶' --marker='✓'
-	--layout=reverse --multi --info=inline 
-	--preview 'bat --style=numbers --color=always {} --line-range :500 {}' --border
-	--bind '?:toggle-preview'
-	--bind 'ctrl-a:select-all'
-	--bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
-	--bind 'ctrl-e:execute(echo {+} | xargs -o nvim)'
-	--bind 'ctrl-v:execute(code {+})'
-	--color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'
+        --height=85%
+        --prompt='∼ ' --pointer='▶' --marker='✓'
+        --layout=reverse --multi --info=inline
+        --preview 'bat --style=numbers --color=always {} --line-range :500 {}' --border
+        --bind '?:toggle-preview'
+        --bind 'ctrl-a:select-all'
+        --bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
+        --bind 'ctrl-e:execute(echo {+} | xargs -o nvim)'
+        --bind 'ctrl-v:execute(code {+})'
+        --color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'
 "
+STARSHIP_CONFIG=~/.config/starship/config.toml
 PATH="{{ ansible_env.HOME }}/.local/bin:/usr/sbin:$PATH"
 
 export LANGUAGE
 export LANG
 
+export RHEL_USERNAME
+export RHEL_PASSWORD
+
+export STARSHIP_CONFIG
 export PATH
 export FZF_DEFAULT_COMMAND
 export FZF_DEFAULT_OPTS
@@ -28,14 +39,16 @@ export FZF_DEFAULT_OPTS
 alias vim="nvim"
 alias ls="exa -hlg"
 alias cat="bat"
-alias grep="rg"
+
+export HISTSIZE
+export SAVEHIST
 
 # Remove duplicates in history
 setopt EXTENDED_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_SPACE  
+setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_BEEP

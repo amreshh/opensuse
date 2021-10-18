@@ -1,0 +1,8 @@
+---
+# https://exitcode0.net/awus036ac-rt8812au-driver-setup-in-kali-linux/
+
+git clone https://github.com/aircrack-ng/rtl8812au
+cd rtl8812au
+make
+make install
+reboot now
