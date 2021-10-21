@@ -17,9 +17,3 @@
       - libvirtdbus
       - vagrant
       - users
-
-# this works for cockpit
-
-# amresh@chaosrealm  ~  id amresh
-# uid=1000(amresh) gid=100(users) groups=454(docker),108(libvirt),457(libvirtdbus),453(vagrant),456(vboxusers),100(users)
-# amresh@chaosrealm  ~ 

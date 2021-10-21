@@ -1,6 +1,0 @@
----
-- name: Configure krunner
-  ansible.builtin.copy:
-    src: krunnerrc
-    dest: ~/.config/krunnerrc
-    mode: '0600'

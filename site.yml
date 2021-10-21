@@ -11,16 +11,18 @@
     - zplug
     - firefox
     - neovim
-    # - nerd_fonts
+    - wireless_driver
 
 # User
-# - hosts: opensuse
-#   remote_user: "{{ ansible_user }}"
-#   become: no
-#   roles:
-#     - flatpak
-#     - ranger
-#     - zsh
-#     - python
-#     - neovim
-#     # - kde
+- hosts: opensuse
+  remote_user: "{{ ansible_user }}"
+  become: no
+  roles:
+    - flatpak
+    - ranger
+    - zsh
+    - zplug
+    - python
+    - neovim
+    - autostart
+    - nerd_fonts

@@ -2,7 +2,4 @@
   desktop:
     hosts:
       opensuse:
-        ansible_host: 192.168.122.14
-        # ansible_user: "{{ opensuse_user }}"
-        # ansible_password: "{{ opensuse_password }}"
-        # ansible_sudo_pass: "{{ opensuse_sudo_pass }}"
+        ansible_host: 192.168.122.87

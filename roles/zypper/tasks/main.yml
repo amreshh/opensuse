@@ -160,12 +160,3 @@
     - libvirtd.service
   loop_control:
     loop_var: services
-
-
-# set this user as follows:
-# amresh@chaosrealm  ~  id libvirtdbus
-# uid=457(libvirtdbus) gid=457(libvirtdbus) groups=108(libvirt),457(libvirtdbus)
-# amresh@chaosrealm  ~ 
-
-
-# add nvidia repo

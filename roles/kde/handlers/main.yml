@@ -1,7 +1,0 @@
----
-- name: restart kwin
-  ansible.builtin.shell:
-    cmd: killall krunner
-  args:
-    executable: /bin/zsh
-    warn: no

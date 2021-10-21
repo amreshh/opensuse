@@ -28,13 +28,13 @@
     path: /opt/firefox
     owner: "{{ ansible_user }}"
     group: users
-    mode: '0755'
+    mode: "0755"
     recurse: yes
 
 - name: Create firefox desktop entry
-  ansible.builtin.copy:
-    src: firefox-developer-edition.desktop
-    dest: /usr/share/applications
+  ansible.builtin.template:
+    src: firefox-developer-edition.desktop.j2
+    dest: /usr/share/applications/firefox-developer-edition.desktop
     group: root
     owner: root
-    mode: '0644'
+    mode: "0644"

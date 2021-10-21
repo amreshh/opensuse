@@ -1,83 +1,36 @@
 ---
 - name: Install starshiprs
   ansible.builtin.shell: sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
+  become: yes
+
+- name: Correct starship permissions
+  ansible.builtin.file:
+    path: /usr/local/bin/starship
+    owner: root
+    group: root
+    mode: "0755"
+  become: yes
 
 - name: Copy zshenv
   ansible.builtin.template:
     src: zshenv.j2
-    dest: ~/.zshenv
-    mode: '0644'
+    dest: "{{ ansible_env.HOME }}/.zshenv"
+    mode: "0644"
 
 - name: Copy zshrc
   ansible.builtin.template:
     src: zshrc.j2
-    dest: ~/.zshrc
-    mode: '0644'
+    dest: "{{ ansible_env.HOME }}/.zshrc"
+    mode: "0644"
 
 - name: Create starshiprs config dir
   ansible.builtin.file:
-    path: ~/.config/starship
-    mode: '0755'
+    path: "{{ ansible_env.HOME }}/.config/starship"
+    mode: "0755"
     state: directory
 
 - name: Copy starshiprs config
   ansible.builtin.template:
     src: config.toml.j2
-    dest: ~/.config/starship/config.toml
-    mode: '0644'
-
-# # https://galaxy.ansible.com/gantsign/oh-my-zsh
-# - name: Install oh-my-zsh
-#   import_role:
-#     name: gantsign.oh-my-zsh
-#   become: yes
-#   vars:
-#     users:
-#       - username: "{{ ansible_user_id }}"
-#         oh_my_zsh:
-#           theme: agnoster
-#           plugins:
-#             - git
-#             - docker
-#             - docker-compose
-#             - fzf
-#             - zsh-autosuggestions
-#             - zsh-syntax-highlighting
-
-# - name: Clone zsh-autosuggestion
-#   ansible.builtin.git:
-#     repo: "https://github.com/zsh-users/zsh-autosuggestions"
-#     dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-#     depth: 1
-#     update: yes
-
-# - name: Clone zsh-syntax-highlighting
-#   ansible.builtin.git:
-#     repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
-#     dest: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-#     depth: 1
-#     update: yes
-
-# - name: Enable zsh auto update
-#   ansible.builtin.lineinfile:
-#     path: ~/.zshrc
-#     regexp: 'DISABLE_AUTO_UPDATE="true"'
-#     line: '# DISABLE_AUTO_UPDATE="true"'
-
-# - name: Add source zshenv
-#   ansible.builtin.lineinfile:
-#     path: ~/.zshrc
-#     insertafter: 'source $ZSH/oh-my-zsh.sh'
-#     line: 'source ~/.zshenv'
-
-# - name: Exclude errors from zsh history
-#   ansible.builtin.lineinfile:
-#     path: ~/.zshrc
-#     line: 'zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }'
-
-# - name: Add comment to zsh history exclusion function
-#   ansible.builtin.lineinfile:
-#     path: ~/.zshrc
-#     insertbefore: 'zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }'
-#     line: '# Exclude errors from history'
-
+    dest: "{{ ansible_env.HOME }}/.config/starship/config.toml"
+    mode: "0644"

@@ -1,9 +1,0 @@
----
-- name: Configure KDE
-  include: "{{ tasks }}"
-  with_items:
-    - global.yml
-    - krunner.yml
-    - konsole.yml
-  loop_control:
-    loop_var: tasks

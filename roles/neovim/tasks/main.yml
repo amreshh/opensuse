@@ -4,7 +4,7 @@
     path: "{{ dirs }}"
     state: directory
     recurse: yes
-    mode: '0750'
+    mode: "0750"
   with_items:
     - "{{ ansible_env.HOME }}/.local/share/nvim/site/autoload"
     - "{{ ansible_env.HOME }}/.config/nvim"
@@ -17,10 +17,10 @@
     dest: "{{ ansible_env.HOME }}/.local/share/nvim/site/autoload/plug.vim"
 
 - name: Copy neovim init.vim
-  ansible.builtin.copy:
-    src: init.vim
-    dest: "{{ ansible_env.HOME }}/.config/nvim"
-    mode: '0644'
+  ansible.builtin.template:
+    src: init.vim.j2
+    dest: "{{ ansible_env.HOME }}/.config/nvim/init.vim"
+    mode: "0644"
 
 - name: Install and update plugins
   ansible.builtin.shell: |

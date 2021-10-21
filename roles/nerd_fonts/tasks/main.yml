@@ -1,18 +1,17 @@
 ---
-- name: Clone nerd-fonts
-  ansible.builtin.git:
-    repo: "https://github.com/ryanoasis/nerd-fonts.git"
-    dest: /tmp/nerd-fonts
-    depth: 1
-    update: yes
-    force: yes
+- name: "Create fonts directory for {{ ansible_user }}"
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.fonts"
+    mode: "0755"
+    state: directory
 
-- name: Patch Hack fonts
-  ansible.builtin.shell:
-    cmd: ./install.sh Hack
-    chdir: /tmp/nerd-fonts
+# Sparse checkout of specific fonts since the repo itself is huge
+- name: "Install fonts for {{ ansible_user }}"
+  ansible.builtin.shell: git clone --depth 1 --filter=blob:none --sparse https://github.com/ryanoasis/nerd-fonts.git
   args:
-    executable: /bin/zsh
-    warn: no
+    chdir: "{{ ansible_env.HOME }}/.fonts"
 
-./install.sh --clean --install-to-system-path --fontawesome
+- name: Sparse checkout font
+  ansible.builtin.shell: git sparse-checkout set patched-fonts/Hack
+  args:
+    chdir: "{{ ansible_env.HOME }}/.fonts/nerd-fonts"

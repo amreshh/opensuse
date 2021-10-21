@@ -2,6 +2,6 @@
 - name: Install zplug
   ansible.builtin.git:
     repo: "https://github.com/zplug/zplug"
-    dest: ~/.zplug
+    dest: "{{ ansible_env.HOME }}/.zplug"
     depth: 1
     update: yes
