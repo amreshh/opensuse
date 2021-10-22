@@ -105,6 +105,7 @@
       - plasma5-systemmonitor
       - minikube
       - helm
+      - k9s
       - compsize
       - x11-video-nvidiaG05
   notify: reboot
