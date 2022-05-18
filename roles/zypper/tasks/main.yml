@@ -60,19 +60,16 @@
       - ranger
       - zstd
       - neovim
-      - docker
       - dolphin-plugins
       - ripgrep
       - fzf
       - zsh
       - fd
+      - fzf-zsh-completion
       # - fd-zsh-completion
       # - zsh-autosuggestions
       # - zsh-syntax-highlighting
-      # - docker-zsh-completion
-      # - fzf-zsh-completion
       # - ripgrep-zsh-completion
-      # - docker-zsh-completion
       - flatpak
       - NetworkManager-vpnc
       - vpnc
@@ -108,6 +105,10 @@
       - k9s
       - compsize
       - x11-video-nvidiaG05
+      - dnsmasq
+      - v4l-utils
+      - podman
+      - bottom
   notify: reboot
 
 - name: Uninstall unnecessary zypper packages
@@ -156,7 +157,6 @@
     enabled: yes
     name: "{{ services }}"
   with_items:
-    - docker.service
     - cockpit.socket
     - libvirtd.service
   loop_control:

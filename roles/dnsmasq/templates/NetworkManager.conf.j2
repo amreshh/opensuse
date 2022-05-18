@@ -1,0 +1,9 @@
+{{ ansible_managed | comment }}
+
+[main]
+plugins=keyfile
+dhcp=dhclient
+dns=dnsmasq
+
+[connectivity]
+uri=http://conncheck.opensuse.org

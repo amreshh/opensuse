@@ -12,7 +12,6 @@
     append: yes
     shell: /bin/zsh
     groups:
-      - docker
       - libvirt
       - libvirtdbus
       - vagrant

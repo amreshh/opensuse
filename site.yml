@@ -2,7 +2,7 @@
 # Root
 - hosts: opensuse
   remote_user: "{{ ansible_user }}"
-  become: yes
+  become: true
   roles:
     - zypper
     - user
@@ -12,11 +12,12 @@
     - firefox
     - neovim
     - wireless_driver
+    - dnsmasq
 
 # User
 - hosts: opensuse
   remote_user: "{{ ansible_user }}"
-  become: no
+  become: false
   roles:
     - flatpak
     - ranger

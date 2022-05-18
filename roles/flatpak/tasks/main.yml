@@ -13,9 +13,8 @@
     remote: flathub
     method: user
   with_items:
-    - com.spotify.Client
     - com.bitwarden.desktop
-    # - com.getpostman.Postman
+    - com.getpostman.Postman
     - com.microsoft.Teams
     - com.uploadedlobster.peek
     - net.sourceforge.jpdftweak.jPdfTweak
@@ -29,5 +28,7 @@
     - org.chromium.Chromium
     - com.stremio.Stremio
     - org.wireshark.Wireshark
+    - org.onlyoffice.desktopeditors
+    - sh.cider.Cider
   loop_control:
     loop_var: packages

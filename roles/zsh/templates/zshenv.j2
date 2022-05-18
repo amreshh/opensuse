@@ -9,7 +9,7 @@ RHEL_PASSWORD="{{ rhel_password }}"
 HISTSIZE=999999999
 SAVEHIST=$HISTSIZE
 
-FZF_DEFAULT_COMMAND="rg --files --follow --no-ignore-vcs --hidden --glob '!.git'"
+FZF_DEFAULT_COMMAND="fd --type file"
 FZF_DEFAULT_OPTS="
         --height=85%
         --prompt='∼ ' --pointer='▶' --marker='✓'

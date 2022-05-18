@@ -10,7 +10,3 @@
     name: pipenv
     executable: /usr/bin/pip3
 
-- name: Install python bpytop
-  ansible.builtin.pip:
-    name: bpytop
-    executable: /usr/bin/pip3
