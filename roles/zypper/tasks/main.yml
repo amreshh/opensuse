@@ -108,6 +108,7 @@
       - dnsmasq
       - v4l-utils
       - podman
+      - crun
       - bottom
   notify: reboot
 
