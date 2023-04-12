@@ -1,7 +1,7 @@
 - name: Enable dnsmasq plugin for NetworkManager
   ansible.builtin.template:
     src: NetworkManager.conf.j2
-    dest: /etc/NetworkManager/NetworkManager.conf
+    dest: /etc/NetworkManager/conf.d/NetworkManager.conf
     owner: root
     group: root
     mode: "0644"
