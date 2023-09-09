@@ -8,7 +8,7 @@
   ansible.builtin.user:
     name: "{{ ansible_user }}"
     state: present
-    append: yes
+    append: true
     shell: /bin/zsh
     groups:
       - libvirt

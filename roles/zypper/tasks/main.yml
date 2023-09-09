@@ -107,14 +107,13 @@
       - dnsmasq
       - v4l-utils
       - podman
-      - python311-pexpect
   notify: reboot
 
 - name: Uninstall unnecessary zypper packages
   community.general.zypper:
     name: "{{ packages }}"
     state: absent
-    update_cache: yes
+    update_cache: true
   vars:
     packages:
       - MozillaFirefox
@@ -152,8 +151,8 @@
 - name: Enable services
   ansible.builtin.systemd:
     state: started
-    daemon_reload: yes
-    enabled: yes
+    daemon_reload: true
+    enabled: true
     name: "{{ services }}"
   with_items:
     - cockpit.socket

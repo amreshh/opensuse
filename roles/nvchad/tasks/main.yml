@@ -3,10 +3,7 @@
     repo: "https://github.com/NvChad/NvChad"
     dest: "{{ ansible_env.HOME }}/.config/nvim"
     depth: 1
-    update: yes
+    update: true
 
-- name: Install nvchad
-  ansible.builtin.expect:
-    command: nvim
-    responses:
-      "Do you want to install example custom config? (y/N)": "y"
+# - name: Install nvchad
+#   ansible.builtin.shell: cat y | nvim
