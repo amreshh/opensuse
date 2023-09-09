@@ -1,4 +1,3 @@
----
 - name: Add the flathub repository remote to the user installation
   community.general.flatpak_remote:
     name: flathub
@@ -14,21 +13,19 @@
     method: user
   with_items:
     - com.bitwarden.desktop
+    - com.discordapp.Discord
     - com.getpostman.Postman
     - com.microsoft.Teams
-    - com.uploadedlobster.peek
-    - net.sourceforge.jpdftweak.jPdfTweak
-    - org.clementine_player.Clementine
-    - org.keepassxc.KeePassXC
-    - org.musicbrainz.Picard
+    - com.slack.Slack
+    - com.stremio.Stremio
+    - dev.k8slens.OpenLens
+    - org.chromium.Chromium
+    - org.ksnip.ksnip
+    - org.mozilla.Thunderbird
+    - org.onlyoffice.desktopeditors
     - org.qbittorrent.qBittorrent
     - org.remmina.Remmina
     - org.videolan.VLC
-    - org.ksnip.ksnip
-    - org.chromium.Chromium
-    - com.stremio.Stremio
-    - org.wireshark.Wireshark
-    - org.onlyoffice.desktopeditors
     - sh.cider.Cider
   loop_control:
     loop_var: packages

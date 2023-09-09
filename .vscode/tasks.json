@@ -7,14 +7,14 @@
       "label": "ansible lint",
       "type": "shell",
       "command": [
-        "pipenv run ansible-lint"
+        "ansible-lint"
       ]
     },
     {
       "label": "ansible-playbook",
       "type": "shell",
       "command": [
-        "pipenv run ansible-playbook -i ${workspaceFolder}/inventory.yml site.yml"
+        "ansible-playbook -i ${workspaceFolder}/inventory.yml site.yml"
       ]
     }
   ]

@@ -1,11 +1,10 @@
----
 # https://exitcode0.net/awus036ac-rt8812au-driver-setup-in-kali-linux/
 - name: Clone rtl8812au driver
   ansible.builtin.git:
     repo: https://github.com/aircrack-ng/rtl8812au.git
     dest: /tmp/rtl8812au
     depth: 1
-    update: yes
+    update: true
 
 - name: Build rtl8812au driver
   community.general.make:

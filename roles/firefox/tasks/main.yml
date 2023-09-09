@@ -1,4 +1,3 @@
----
 - name: Check if firefox already present
   ansible.builtin.stat:
     path: /opt/firefox

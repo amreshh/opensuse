@@ -1,0 +1,18 @@
+{
+  "dockerFile": "Dockerfile",
+  "shutdownAction": "stopContainer",
+  "mounts": [
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/root/.ssh,type=bind,consistency=cached"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "VisualStudioExptTeam.vscodeintellicode",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "redhat.ansible",
+        "docsmsft.docs-markdown"
+      ]
+    }
+  }
+}

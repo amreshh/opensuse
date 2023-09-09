@@ -41,9 +41,6 @@ source ~/.zplug/init.zsh
 zplug "zsh-users/zsh-autosuggestions", defer:2
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "plugins/fzf", from:oh-my-zsh, defer:2
-zplug "plugins/kubectl", from:oh-my-zsh, defer:2
-zplug "plugins/minikube", from:oh-my-zsh, defer:2
-zplug "plugins/helm", from:oh-my-zsh, defer:2
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -56,3 +53,7 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load
 
+source "{{ ansible_env.HOME }}/.config/broot/launcher/bash/br"
+source <(kubectl completion zsh)
+source <(helm completion zsh)
+source <(minikube completion zsh)

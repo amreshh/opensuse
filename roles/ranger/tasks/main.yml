@@ -1,4 +1,3 @@
----
 - name: Create ranger config directory
   ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/.config/ranger"
@@ -16,4 +15,4 @@
     repo: "https://github.com/alexanderjeurissen/ranger_devicons"
     dest:  "{{ ansible_env.HOME }}/.config/ranger/plugins/ranger_devicons"
     depth: 1
-    update: yes
+    update: true

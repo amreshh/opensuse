@@ -1,4 +1,3 @@
----
 - name: Add vs code-insiders repo
   community.general.zypper_repository:
     repo: "https://packages.microsoft.com/yumrepos/vscode"
@@ -55,6 +54,9 @@
   vars:
     packages:
       - bat
+      - bc
+      - broot
+      - crun
       - git
       - git-lfs
       - ranger
@@ -77,8 +79,7 @@
       - code-insiders
       - filelight
       - kvantum-manager
-      - kvantum-qt5
-      - ansible
+      - kvantum-qt6
       - cockpit
       - cockpit-bridge
       - cockpit-machines
@@ -93,14 +94,13 @@
       - virt-manager
       - vagrant
       - vagrant-libvirt
-      - terraform
-      - terraform-provider-aws
       - sshpass
       - qemu-hw-display-qxl
       - gnome-keyring
       - virt-viewer
-      - plasma5-systemmonitor
+      # - plasma5-systemmonitor
       - minikube
+      - kubernetes-client
       - helm
       - k9s
       - compsize
@@ -108,15 +108,13 @@
       - dnsmasq
       - v4l-utils
       - podman
-      - crun
-      - bottom
   notify: reboot
 
 - name: Uninstall unnecessary zypper packages
   community.general.zypper:
     name: "{{ packages }}"
     state: absent
-    update_cache: yes
+    update_cache: true
   vars:
     packages:
       - MozillaFirefox
@@ -154,8 +152,8 @@
 - name: Enable services
   ansible.builtin.systemd:
     state: started
-    daemon_reload: yes
-    enabled: yes
+    daemon_reload: true
+    enabled: true
     name: "{{ services }}"
   with_items:
     - cockpit.socket

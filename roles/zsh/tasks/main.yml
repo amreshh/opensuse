@@ -1,7 +1,6 @@
----
 - name: Install starshiprs
   ansible.builtin.shell: sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
-  become: yes
+  become: true
 
 - name: Correct starship permissions
   ansible.builtin.file:
@@ -9,7 +8,7 @@
     owner: root
     group: root
     mode: "0755"
-  become: yes
+  become: true
 
 - name: Copy zshenv
   ansible.builtin.template:

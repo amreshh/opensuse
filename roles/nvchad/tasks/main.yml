@@ -1,0 +1,9 @@
+- name: Clone nvchad
+  ansible.builtin.git:
+    repo: "https://github.com/NvChad/NvChad"
+    dest: "{{ ansible_env.HOME }}/.config/nvim"
+    depth: 1
+    update: true
+
+# - name: Install nvchad
+#   ansible.builtin.shell: cat y | nvim
