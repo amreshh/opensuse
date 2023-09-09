@@ -1,0 +1,5 @@
+- name: Copy krunnerrc
+  ansible.builtin.template:
+    src: krunnerrc.j2
+    dest: "{{ ansible_env.HOME }}/.config/krunnerrc"
+    mode: "0600"

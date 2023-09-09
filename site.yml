@@ -1,27 +1,28 @@
-# Root
-- hosts: opensuse
-  remote_user: "{{ ansible_user }}"
-  become: true
-  roles:
-    - zypper
-    - user
-    - ranger
-    - zsh
-    - zplug
-    - firefox
-    - nvchad
-    - wireless_driver
-    - dnsmasq
+# # Root
+# - hosts: opensuse
+#   remote_user: "{{ ansible_user }}"
+#   become: true
+#   roles:
+#     - zypper
+#     - user
+#     - ranger
+#     - zsh
+#     - zplug
+#     - firefox
+#     - nvchad
+#     - wireless_driver
+#     - dnsmasq
 
 # User
 - hosts: opensuse
   remote_user: "{{ ansible_user }}"
   become: false
   roles:
-    - flatpak
-    - ranger
-    - zsh
-    - zplug
-    - nvchad
-    - autostart
+    # - flatpak
+    # - ranger
+    # - zsh
+    # - zplug
+    # - nvchad
+    # - autostart
+    - kde
     # - nerd_fonts
