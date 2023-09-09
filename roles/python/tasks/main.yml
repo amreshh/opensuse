@@ -1,4 +1,3 @@
----
 - name: Upgrade python pip packages
   ansible.builtin.pip:
     name: pip

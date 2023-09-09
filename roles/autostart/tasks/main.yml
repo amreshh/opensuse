@@ -1,4 +1,3 @@
----
 - name: Copy nvidia-fan-speed autostart config
   ansible.builtin.template:
     src: nvidia-fan-speed.desktop.j2

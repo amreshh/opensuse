@@ -1,4 +1,3 @@
----
 # Root
 - hosts: opensuse
   remote_user: "{{ ansible_user }}"
@@ -10,19 +9,23 @@
     - zsh
     - zplug
     - firefox
-    - neovim
+    # - neovim
     - wireless_driver
+    - dnsmasq
 
 # User
 - hosts: opensuse
   remote_user: "{{ ansible_user }}"
   become: no
   roles:
-    - flatpak
-    - ranger
-    - zsh
-    - zplug
-    - python
-    - neovim
+    # - flatpak
+    # - ranger
+    # - zsh
+    # - zplug
+
+    # - python
+    # - neovim
+
+    - nvchad
     - autostart
     - nerd_fonts

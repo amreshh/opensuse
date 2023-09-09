@@ -1,5 +1,4 @@
----
-  desktop:
-    hosts:
-      opensuse:
-        ansible_host: 192.168.122.87
+desktop:
+  hosts:
+    opensuse:
+      ansible_host: 192.168.122.200

@@ -1,4 +1,3 @@
----
 - name: Add vs code-insiders repo
   community.general.zypper_repository:
     repo: "https://packages.microsoft.com/yumrepos/vscode"
@@ -55,24 +54,23 @@
   vars:
     packages:
       - bat
+      - bc
+      - broot
       - git
       - git-lfs
       - ranger
       - zstd
       - neovim
-      - docker
       - dolphin-plugins
       - ripgrep
       - fzf
       - zsh
       - fd
+      - fzf-zsh-completion
       # - fd-zsh-completion
       # - zsh-autosuggestions
       # - zsh-syntax-highlighting
-      # - docker-zsh-completion
-      # - fzf-zsh-completion
       # - ripgrep-zsh-completion
-      # - docker-zsh-completion
       - flatpak
       - NetworkManager-vpnc
       - vpnc
@@ -80,8 +78,7 @@
       - code-insiders
       - filelight
       - kvantum-manager
-      - kvantum-qt5
-      - ansible
+      - kvantum-qt6
       - cockpit
       - cockpit-bridge
       - cockpit-machines
@@ -96,18 +93,21 @@
       - virt-manager
       - vagrant
       - vagrant-libvirt
-      - terraform
-      - terraform-provider-aws
       - sshpass
       - qemu-hw-display-qxl
       - gnome-keyring
       - virt-viewer
-      - plasma5-systemmonitor
+      # - plasma5-systemmonitor
       - minikube
+      - kubernetes-client
       - helm
       - k9s
       - compsize
       - x11-video-nvidiaG05
+      - dnsmasq
+      - v4l-utils
+      - podman
+      - python311-pexpect
   notify: reboot
 
 - name: Uninstall unnecessary zypper packages
@@ -156,7 +156,6 @@
     enabled: yes
     name: "{{ services }}"
   with_items:
-    - docker.service
     - cockpit.socket
     - libvirtd.service
   loop_control:

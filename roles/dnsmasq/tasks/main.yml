@@ -1,0 +1,29 @@
+- name: Enable dnsmasq plugin for NetworkManager
+  ansible.builtin.template:
+    src: NetworkManager.conf.j2
+    dest: /etc/NetworkManager/conf.d/NetworkManager.conf
+    owner: root
+    group: root
+    mode: "0644"
+  notify: restart NetworkManager
+
+- name: Wait for target connection to be reachable
+  wait_for_connection:
+    delay: 60
+    timeout: 300
+
+- name: Create dnsmasq.d conf directory
+  ansible.builtin.file:
+    path: /etc/NetworkManager/dnsmasq.d
+    owner: root
+    group: root
+    state: directory
+    mode: "0755"
+
+- name: Copy minikube dnsmasq configuration
+  ansible.builtin.template:
+    src: minikube.conf.j2
+    dest: /etc/NetworkManager/dnsmasq.d/minikube.conf
+    owner: "{{ ansible_user }}"
+    group: users
+    mode: "0644"

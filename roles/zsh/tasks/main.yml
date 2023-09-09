@@ -1,4 +1,3 @@
----
 - name: Install starshiprs
   ansible.builtin.shell: sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
   become: yes
