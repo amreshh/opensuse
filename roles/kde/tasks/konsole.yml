@@ -1,0 +1,5 @@
+- name: Copy konsole profile
+  ansible.builtin.template:
+    src: konsole.profile.j2
+    dest: "{{ ansible_env.HOME }}/.local/share/konsole/konsole.profile"
+    mode: "0600"
