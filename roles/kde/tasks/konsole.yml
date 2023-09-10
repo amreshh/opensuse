@@ -1,3 +1,9 @@
+- name: Create konsole profile directory
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.local/share/konsole"
+    state: directory
+    mode: "0755"
+
 - name: Copy konsole profile
   ansible.builtin.template:
     src: konsole.profile.j2

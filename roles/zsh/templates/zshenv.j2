@@ -11,19 +11,6 @@ EDITOR=nvim
 HISTSIZE=999999999
 SAVEHIST=$HISTSIZE
 
-FZF_DEFAULT_COMMAND="fd --type file"
-FZF_DEFAULT_OPTS="
-        --height=85%
-        --prompt='∼ ' --pointer='▶' --marker='✓'
-        --layout=reverse --multi --info=inline
-        --preview 'bat --style=numbers --color=always {} --line-range :500 {}' --border
-        --bind '?:toggle-preview'
-        --bind 'ctrl-a:select-all'
-        --bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
-        --bind 'ctrl-e:execute(echo {+} | xargs -o nvim)'
-        --bind 'ctrl-v:execute(code {+})'
-        --color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'
-"
 STARSHIP_CONFIG=~/.config/starship/config.toml
 PATH="{{ ansible_env.HOME }}/.local/bin:/usr/sbin:$PATH"
 
