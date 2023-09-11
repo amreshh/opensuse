@@ -1,22 +1,22 @@
 - name: Add vs code-insiders repo
   community.general.zypper_repository:
     repo: "https://packages.microsoft.com/yumrepos/vscode"
-    autorefresh: yes
-    enabled: yes
+    autorefresh: true
+    enabled: true
     name: vscode
     state: present
-    auto_import_keys: yes
-    disable_gpg_check: yes
+    auto_import_keys: true
+    disable_gpg_check: true
 
 - name: Add nvidia repo
   community.general.zypper_repository:
     repo: "https://download.nvidia.com/opensuse/tumbleweed"
-    autorefresh: yes
-    enabled: yes
+    autorefresh: true
+    enabled: true
     name: nvidia
     state: present
-    auto_import_keys: yes
-    disable_gpg_check: no
+    auto_import_keys: true
+    disable_gpg_check: false
 
 # - name: Add zsh-autosuggestions repo
 #   community.general.zypper_repository:
@@ -50,7 +50,7 @@
   community.general.zypper:
     name: "{{ packages }}"
     state: latest
-    update_cache: yes
+    update_cache: true
   vars:
     packages:
       - bat
@@ -104,7 +104,7 @@
       - helm
       - k9s
       - compsize
-      - x11-video-nvidiaG05
+      - nvidia-drivers-G06
       - dnsmasq
       - v4l-utils
       - podman
