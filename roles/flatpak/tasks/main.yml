@@ -26,6 +26,7 @@
     - org.qbittorrent.qBittorrent
     - org.remmina.Remmina
     - org.videolan.VLC
+    - org.kde.kleopatra
     - sh.cider.Cider
   loop_control:
     loop_var: packages
