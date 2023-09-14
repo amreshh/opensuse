@@ -67,6 +67,8 @@
       - fzf
       - zsh
       - fd
+      - eza
+      - eza-zsh-completion
       - fzf-zsh-completion
       # - fd-zsh-completion
       # - zsh-autosuggestions
@@ -89,7 +91,6 @@
       - cockpit-storaged
       - cockpit-system
       - cockpit-ws
-      - exa
       - neofetch
       - virt-manager
       - vagrant
