@@ -33,7 +33,7 @@ truncation_symbol = ""
 "~/Videos" = " "
 "~/Pictures" = " "
 "~/Downloads" = " "
-"~/Projects" = " "
+"~/Projects" = " "
 "~" = " "
 
 [git_branch]
@@ -57,8 +57,11 @@ style = "#929c9f"
 [kubernetes]
 symbol = "󱃾"
 style = "#6da3ff"
-format = "[$symbol $namespace]($style)"
+format = "[$symbol $namespace:$context]($style)"
 disabled = false
+[kubernetes.context_aliases]
+".*sandbox01.*" = "sandbox01"
+".*non-prod01.*" = "non-prod01"
 
 [username]
 style_user = "white bold"
