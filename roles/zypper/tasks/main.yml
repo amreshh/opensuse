@@ -109,6 +109,7 @@
       - dnsmasq
       - v4l-utils
       - podman
+      - jq
   notify: reboot
 
 - name: Uninstall unnecessary zypper packages
