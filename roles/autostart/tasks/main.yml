@@ -1,5 +1,0 @@
-- name: Copy nvidia-fan-speed autostart config
-  ansible.builtin.template:
-    src: nvidia-fan-speed.desktop.j2
-    dest: "{{ ansible_env.HOME }}/.config/autostart/nvidia-fan-speed.desktop"
-    mode: "0644"

@@ -9,7 +9,6 @@
     - zsh
     - firefox
     - nvchad
-    # - wireless_driver
     - dnsmasq
 
 # User
@@ -21,6 +20,4 @@
     - ranger
     - zsh
     - nvchad
-    - autostart
     - kde
-    # - nerd_fonts
