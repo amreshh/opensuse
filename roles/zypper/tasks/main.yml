@@ -8,36 +8,6 @@
     auto_import_keys: true
     disable_gpg_check: true
 
-- name: Add nvidia repo
-  community.general.zypper_repository:
-    repo: "https://download.nvidia.com/opensuse/tumbleweed"
-    autorefresh: true
-    enabled: true
-    name: nvidia
-    state: present
-    auto_import_keys: true
-    disable_gpg_check: false
-
-# - name: Add zsh-autosuggestions repo
-#   community.general.zypper_repository:
-#     repo: "https://download.opensuse.org/repositories/shells:/zsh-users:/zsh-autosuggestions/openSUSE_Tumbleweed/"
-#     autorefresh: yes
-#     enabled: yes
-#     name: zsh-autosuggestions
-#     state: present
-#     auto_import_keys: yes
-#     disable_gpg_check: no
-
-# - name: Add zsh-syntax-highlighting repo
-#   community.general.zypper_repository:
-#     repo: "https://download.opensuse.org/repositories/shells:/zsh-users:/zsh-syntax-highlighting/openSUSE_Tumbleweed/"
-#     autorefresh: yes
-#     enabled: yes
-#     name: zsh-syntax-highlighting
-#     state: present
-#     auto_import_keys: yes
-#     disable_gpg_check: no
-
 - name: Perform a dist-upgrade
   community.general.zypper:
     name: "*"
@@ -70,10 +40,6 @@
       - eza
       - eza-zsh-completion
       - fzf-zsh-completion
-      # - fd-zsh-completion
-      # - zsh-autosuggestions
-      # - zsh-syntax-highlighting
-      # - ripgrep-zsh-completion
       - flatpak
       - NetworkManager-vpnc
       - vpnc
@@ -99,13 +65,11 @@
       - qemu-hw-display-qxl
       - gnome-keyring
       - virt-viewer
-      # - plasma5-systemmonitor
       - minikube
       - kubernetes-client
       - helm
       - k9s
       - compsize
-      - nvidia-drivers-G06
       - dnsmasq
       - v4l-utils
       - podman
