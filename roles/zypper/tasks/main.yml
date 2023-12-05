@@ -113,6 +113,8 @@
       - liboggkate1
       - spectacle
       - spectacle-lang
+      - netavark
+      - aardvark-dns
   notify: reboot
 
 - name: Enable services
