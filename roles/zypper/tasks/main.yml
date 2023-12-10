@@ -74,6 +74,8 @@
       - v4l-utils
       - podman
       - jq
+      - netavark
+      - aardvark-dns
   notify: reboot
 
 - name: Uninstall unnecessary zypper packages
@@ -113,8 +115,6 @@
       - liboggkate1
       - spectacle
       - spectacle-lang
-      - netavark
-      - aardvark-dns
   notify: reboot
 
 - name: Enable services
